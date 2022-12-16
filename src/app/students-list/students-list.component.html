@@ -1,0 +1,28 @@
+<div>
+  <form #formStudent="ngForm">
+    <div class="form-group">
+      <h1 class="text-center">Lista Alunos</h1>
+      <!--
+      <div class="input-group-prepend">
+        <input type="text" placeholder="Adicionar tarefa" name="task" #task
+          [(ngModel)]="nameTaskModel" maxlength="30"
+          class="form-control">
+        <span (click)="addTask(task.value)" class="input-group-text">
+          <i class="material-icons">add</i>
+        </span>
+      </div>
+      -->
+    </div>
+    <div class="data">
+      <ul class="list-unstyled">
+        <li [@moveInLeft] *ngFor="let studentItem of listStudents">{{studentItem.name}}
+          <!--
+          <i (click)="removeTask(itemTask.id)" class="material-icons">delete</i>
+          <i (click)="editTask(itemTask.id)" class="material-icons">edit</i>
+          <i (click)="detailTask(itemTask.id)" class="material-icons">visibility</i>
+          -->
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>
