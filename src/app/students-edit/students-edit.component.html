@@ -1,1 +1,41 @@
-<p>students-edit works!</p>
+<form>
+  <div class="container">
+    <div class="mb-3 row">
+      <label for="nameStudent" class="col-sm-4 col-form-label">Nome do Aluno</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="nameStudent" [(ngModel)]="student.name" name="name">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="lastName" class="col-sm-4 col-form-label">Ultimo nome</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="lastName" [(ngModel)]="student.lastName" name="lastName">
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="birthDate" class="col-sm-4 col-form-label">Aniversario</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="aniversario" [(ngModel)]="student.birthDate" name="birthDate">
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="matriculation" class="col-sm-4 col-form-label">Matricula</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="matriculation" [(ngModel)]="student.matriculation" name="matriculation">
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="document" class="col-sm-4 col-form-label">Numero do Documento</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="document" [(ngModel)]="student.document" name="document">
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <button (click)="save()">Salvar</button>
+    </div>
+  </div>
+</form>

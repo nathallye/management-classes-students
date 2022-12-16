@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { IStudentDto } from '../interfaces/IStudentDto';
 
@@ -7,7 +7,7 @@ import { IStudentDto } from '../interfaces/IStudentDto';
   templateUrl: './students-detail.component.html',
   styleUrls: ['./students-detail.component.css']
 })
-export class StudentsDetailComponent {
+export class StudentsDetailComponent implements OnInit {
   @Input() student!: IStudentDto;
   @Input() closeDetail!: () => void;
 

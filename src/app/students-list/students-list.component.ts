@@ -38,7 +38,7 @@ export class StudentsListComponent {
       });
   }
 
-  detail(id: number) {
+  detailStudent(id: number) {
     this.screenToDisplay = 'detail';
 
     for (let i = 0; i < this.listStudents.length; i++) {
@@ -53,6 +53,9 @@ export class StudentsListComponent {
     this.screenToDisplay = 'list';
   }
 
+  editStudent(id: number) {
+    this.router.navigate([`edit/${id}`]);
+  }
 
   removeStudent(id: number) {
     this.http.delete(`https://localhost:7028/api/Students/Delete/?id=${id}`)
@@ -61,10 +64,4 @@ export class StudentsListComponent {
         this.getAll();
       });
   }
-
-  /*
-  editStudent(id: number) {
-    this.router.navigate([`edit/${id}`]);
-  }
-  */
 }

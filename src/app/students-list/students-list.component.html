@@ -17,8 +17,8 @@
       <ul class="list-unstyled">
         <li *ngFor="let studentItem of listStudents">{{studentItem.name}}
           <i (click)="removeStudent(studentItem.id)" class="material-icons">delete</i>
-          <!--<i (click)="editStudent(studentItem.id)" class="material-icons">edit</i>-->
-          <i (click)="detail(studentItem.id)" class="material-icons">visibility</i>
+          <i (click)="editStudent(studentItem.id)" class="material-icons">edit</i>
+          <i (click)="detailStudent(studentItem.id)" class="material-icons">visibility</i>
         </li>
       </ul>
     </div>
