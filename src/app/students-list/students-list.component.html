@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="screenToDisplay=='list'">
   <form #formStudent="ngForm">
     <div class="form-group">
       <h1 class="text-center">Lista Alunos</h1>
@@ -15,14 +15,18 @@
     </div>
     <div class="data">
       <ul class="list-unstyled">
-        <li [@moveInLeft] *ngFor="let studentItem of listStudents">{{studentItem.name}}
-          <!--
-          <i (click)="removeTask(itemTask.id)" class="material-icons">delete</i>
-          <i (click)="editTask(itemTask.id)" class="material-icons">edit</i>
-          <i (click)="detailTask(itemTask.id)" class="material-icons">visibility</i>
-          -->
+        <li *ngFor="let studentItem of listStudents">{{studentItem.name}}
+          <i (click)="removeStudent(studentItem.id)" class="material-icons">delete</i>
+          <!--<i (click)="editStudent(studentItem.id)" class="material-icons">edit</i>-->
+          <i (click)="detail(studentItem.id)" class="material-icons">visibility</i>
         </li>
       </ul>
     </div>
   </form>
 </div>
+
+<app-students-detail 
+  *ngIf="screenToDisplay=='detail'"
+  [student]="studentSelected"
+  [closeDetail]="closeDetail">
+</app-students-detail>

@@ -1,0 +1,20 @@
+<form>
+    <div class="container">
+      <div class="mb-3 row">
+        <label for="nameStudent" class="col-sm-4 col-form-label">Nome do Aluno</label>
+        <div class="col-sm-6">
+          <input type="text" readonly class="form-control-plaintext" id="nameStudent" [(ngModel)]="student.name" name="name">
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="lastName" class="col-sm-4 col-form-label">Ultimo nome</label>
+        <div class="col-sm-6">
+          <input type="text" readonly class="form-control-plaintext" id="ultimoNome" [(ngModel)]="student.lastName" name="lastName">
+        </div>
+      </div>
+  
+      <div class="mb-3 row">
+        <button (click)="close()">Fechar</button>
+      </div>
+    </div>
+  </form>
