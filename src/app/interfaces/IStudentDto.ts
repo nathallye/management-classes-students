@@ -1,5 +1,5 @@
 export interface IStudentDto {
-  id: number,
+  key: number,
   name: string,
   lastName: string,
   birthDate: string,

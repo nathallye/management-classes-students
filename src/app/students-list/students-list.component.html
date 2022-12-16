@@ -16,9 +16,9 @@
     <div class="data">
       <ul class="list-unstyled">
         <li *ngFor="let studentItem of listStudents">{{studentItem.name}}
-          <i (click)="removeStudent(studentItem.id)" class="material-icons">delete</i>
-          <i (click)="editStudent(studentItem.id)" class="material-icons">edit</i>
-          <i (click)="detailStudent(studentItem.id)" class="material-icons">visibility</i>
+          <i (click)="removeStudent(studentItem.key)" class="material-icons">delete</i>
+          <i (click)="edit(studentItem.key)" class="material-icons">edit</i>
+          <i (click)="detailStudent(studentItem.key)" class="material-icons">visibility</i>
         </li>
       </ul>
     </div>
@@ -30,3 +30,5 @@
   [student]="studentSelected"
   [closeDetail]="closeDetail">
 </app-students-detail>
+
+<app-students-edit></app-students-edit>

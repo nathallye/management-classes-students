@@ -38,11 +38,11 @@ export class StudentsListComponent {
       });
   }
 
-  detailStudent(id: number) {
+  detailStudent(key: number) {
     this.screenToDisplay = 'detail';
 
     for (let i = 0; i < this.listStudents.length; i++) {
-      if (id == this.listStudents[i].id) {
+      if (key == this.listStudents[i].key) {
         this.studentSelected = this.listStudents[i];
         break;
       }
@@ -53,12 +53,12 @@ export class StudentsListComponent {
     this.screenToDisplay = 'list';
   }
 
-  editStudent(id: number) {
-    this.router.navigate([`edit/${id}`]);
+  edit(key: number) {
+    this.router.navigate([`edit/${key}`]);
   }
 
-  removeStudent(id: number) {
-    this.http.delete(`https://localhost:7028/api/Students/Delete/?id=${id}`)
+  removeStudent(key: number) {
+    this.http.delete(`https://localhost:7028/api/Students/Delete/?id=${key}`)
       .subscribe((data) => {
         console.log(`Linhas executadas no método de remover do banco ${JSON.stringify(data)}`);
         this.getAll();

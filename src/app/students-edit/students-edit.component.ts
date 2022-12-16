@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { IStudentDto } from '../interfaces/IStudentDto';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-students-edit',
@@ -10,24 +10,33 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./students-edit.component.css']
 })
 
-export class StudentsEditComponent {
+export class StudentsEditComponent implements OnInit {
   student!: IStudentDto;
   idReceived!: number;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
     this.route.paramMap.subscribe(params => {
-      this.idReceived = Number(params.get('id'));
+      this.idReceived = Number(params.get('key'));
     });
   }
 
   ngOnInit(): void {
     this.student = {
-      id: this.idReceived ?? 0,
+      key: this.idReceived ?? 0,
       name: '',
       lastName: '',
       birthDate: '',
       matriculation: '',
       document: ''
+    }
+
+     // BUSCAR NA API OS DADOS DO ALUNO QUE RECEBEMOS O ID NA URL
+    if (this.idReceived) {
+      this.http
+        .get(`https://localhost:7028/api/Students/GetOne/?id=${this.idReceived}`)
+        .subscribe((data) => {
+          this.student = data as IStudentDto;
+        });
     }
   }
 
