@@ -18,7 +18,7 @@ export class StudentsListComponent {
 
   getAll() {
     this.http
-      .get('http://192.168.56.1:5126/api/Students/GelAll')
+      .get('http://localhost/api/Students/GetAll')
       .subscribe((data) => {
         console.log(`A chamada para a API retornou o ${JSON.stringify(data)}`);
       });
