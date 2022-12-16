@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,8 +11,11 @@ import { IStudentDto } from '../interfaces/IStudentDto';
 })
 
 export class StudentsEditComponent implements OnInit {
+  @Input() closeEdit!: () => void;
+  
   student!: IStudentDto;
   idReceived!: number;
+  
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
     this.route.paramMap.subscribe(params => {
@@ -41,6 +44,44 @@ export class StudentsEditComponent implements OnInit {
   }
 
   save() {
-    console.log(`Objeto para salvar: ${JSON.stringify(this.student)}`);
+    // console.log(`Objeto para salvar: ${JSON.stringify(this.student)}`);
+
+    if (this.validateInfo()) {
+      console.log(`Objeto para salvar: ${JSON.stringify(this.student)}`);
+
+      if (this.student.key == 0) {
+
+        this.http.post('https://localhost:7028/api/Students/Create', this.student)
+          .subscribe((data) => {
+            this.router.navigate(['list']);
+          });
+
+      } else {
+        this.http.patch('https://localhost:7028/api/Students/Update', this.student)
+          .subscribe((data) => {
+            this.router.navigate(['list']);
+          });
+      }
+
+    } else {
+      console.log('Erro na validação');
+      // TRATAMENTO DE ERRO
+      // ALERTA
+      // BORDA VERMELHA
+    }
+  }
+
+  validateInfo(): boolean {
+    if (this.student.name == '') {
+      return false;
+    }
+
+    // VALIDAR COM REGEX
+
+    return true;
+  }
+
+  close() {
+    this.closeEdit();
   }
 }

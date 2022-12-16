@@ -49,11 +49,13 @@ export class StudentsListComponent {
     }
   }
 
-  closeDetail = () => {
+  close = () => {
     this.screenToDisplay = 'list';
   }
 
   edit(key: number) {
+    this.screenToDisplay = 'edit';
+
     this.router.navigate([`edit/${key}`]);
   }
 

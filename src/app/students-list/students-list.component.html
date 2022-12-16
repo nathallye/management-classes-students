@@ -28,7 +28,9 @@
 <app-students-detail 
   *ngIf="screenToDisplay=='detail'"
   [student]="studentSelected"
-  [closeDetail]="closeDetail">
+  [closeDetail]="close">
 </app-students-detail>
 
-<app-students-edit></app-students-edit>
+<app-students-edit 
+  *ngIf="screenToDisplay=='edit'"
+  [closeEdit]="close"></app-students-edit>
