@@ -11,8 +11,6 @@ import { IStudentDto } from '../interfaces/IStudentDto';
 })
 
 export class StudentsEditComponent implements OnInit {
-  @Input() closeEdit!: () => void;
-  
   student!: IStudentDto;
   idReceived!: number;
   
@@ -82,6 +80,6 @@ export class StudentsEditComponent implements OnInit {
   }
 
   close() {
-    this.closeEdit();
+    this.router.navigate([`list`]);
   }
 }

@@ -54,8 +54,6 @@ export class StudentsListComponent {
   }
 
   edit(key: number) {
-    this.screenToDisplay = 'edit';
-
     this.router.navigate([`edit/${key}`]);
   }
 
